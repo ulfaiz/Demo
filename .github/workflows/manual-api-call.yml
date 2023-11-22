@@ -2,7 +2,8 @@ name: Json Response Save
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+#    - cron: '0 0 * * *'
+    - cron: '* /5 * * *'
   workflow_dispatch:
 
 
@@ -14,12 +15,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: '17'
 
       - name: Execute Google API and save response
         run: |
