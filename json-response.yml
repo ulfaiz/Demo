@@ -1,0 +1,35 @@
+name: Json Response Save
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+
+jobs:
+  response_sync:
+
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Build with Maven
+        run: mvn clean install
+
+      - name: Execute Google API and save response
+        run: |
+          curl -o response.json https://www.google.com
+
+      - name: Commit changes
+        run: |
+          git add response.json
+          git commit -m "Add Google API response"
+          git push
