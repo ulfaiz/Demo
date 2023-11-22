@@ -2,15 +2,14 @@ name: Json Response Save
 
 on:
   schedule:
-#    - cron: '0 0 * * *'
-    - cron: '*/5 * * * *'
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 
 jobs:
   response_sync:
 
-    runs-on: windows-latest
+    runs-on: docker-maven
 
     steps:
       - name: Checkout code
