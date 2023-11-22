@@ -27,6 +27,8 @@ jobs:
 
       - name: Commit changes
         run: |
+          git config user.email "faizhasan888@gmail.com"
+          git config user.name "ulfaiz"
           git add response.json
           git commit -m "Add Google API response"
           git push
